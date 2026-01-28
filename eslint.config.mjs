@@ -1,21 +1,29 @@
 // <== IMPORTS ==>
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-// <== FILENAME HELPER ==>
-const __filename = fileURLToPath(import.meta.url);
-// <== DIRNAME HELPER ==>
-const __dirname = dirname(__filename);
-
-// <== COMPATIBILITY CONFIGURATION ==>
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import nextPlugin from "@next/eslint-plugin-next";
+import typescriptParser from "@typescript-eslint/parser";
+import typescriptPlugin from "@typescript-eslint/eslint-plugin";
 
 // <== ESLINT CONFIGURATION ==>
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    files: ["**/*.{js,jsx,ts,tsx}"],
+    plugins: {
+      "@next/next": nextPlugin,
+      "@typescript-eslint": typescriptPlugin,
+    },
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+    },
+    rules: {
+      ...nextPlugin.configs["core-web-vitals"].rules,
+      ...typescriptPlugin.configs.recommended.rules,
+    },
+  },
 ];
 
+// <== EXPORT ESLINT CONFIGURATION ==>
 export default eslintConfig;
