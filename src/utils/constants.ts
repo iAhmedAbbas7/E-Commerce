@@ -1,5 +1,5 @@
 // <== IMPORTS ==>
-import { ProductListType } from "@/types/types";
+import { CartItemListType, ProductListType } from "@/types/types";
 
 // <== STATIC PRODUCT LIST DATA ==>
 export const PRODUCTS: ProductListType = [
@@ -110,5 +110,62 @@ export const PRODUCTS: ProductListType = [
     sizes: ["s", "m", "l"],
     colors: ["blue", "green"],
     images: { blue: "/products/8b.png", green: "/products/8gr.png" },
+  },
+];
+
+// <== STATIC CART PAGE DATA ==>
+export const CART_PAGE_STEPS: CartItemListType = [
+  {
+    id: 1,
+    name: "Adidas CoreFit T-Shirt",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 39.9,
+    sizes: ["s", "m", "l", "xl", "xxl"],
+    colors: ["gray", "purple", "green"],
+    images: {
+      gray: "/products/1g.png",
+      purple: "/products/1p.png",
+      green: "/products/1gr.png",
+    },
+    quantity: 1,
+    selectedSize: "m",
+    selectedColor: "purple",
+  },
+  {
+    id: 2,
+    name: "Puma Ultra Warm Zip",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 59.9,
+    sizes: ["s", "m", "l", "xl"],
+    colors: ["gray", "green"],
+    images: { gray: "/products/2g.png", green: "/products/2gr.png" },
+    quantity: 2,
+    selectedSize: "l",
+    selectedColor: "green",
+  },
+  {
+    id: 3,
+    name: "Nike Air Essentials Pullover",
+    shortDescription:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    description:
+      "Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit. Lorem ipsum dolor sit amet consect adipisicing elit lorem ipsum dolor sit.",
+    price: 69.9,
+    sizes: ["s", "m", "l"],
+    colors: ["green", "blue", "black"],
+    images: {
+      green: "/products/3gr.png",
+      blue: "/products/3b.png",
+      black: "/products/3bl.png",
+    },
+    quantity: 1,
+    selectedSize: "s",
+    selectedColor: "black",
   },
 ];
