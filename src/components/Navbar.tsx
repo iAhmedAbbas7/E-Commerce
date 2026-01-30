@@ -6,7 +6,8 @@ import { JSX } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
-import { Bell, Home, ShoppingCart } from "lucide-react";
+import { Bell, Home } from "lucide-react";
+import ShoppingCartIcon from "./ShoppingCartIcon";
 
 // <== NAVBAR COMPONENT ==>
 const Navbar = (): JSX.Element => {
@@ -41,9 +42,7 @@ const Navbar = (): JSX.Element => {
           <Bell className="w-5 h-5 text-gray-600" />
         </Link>
         {/* CART */}
-        <Link href={"/cart"}>
-          <ShoppingCart className="w-5 h-5 text-gray-600" />
-        </Link>
+        <ShoppingCartIcon />
         {/* SIGN IN */}
         <Link
           className="rounded-md px-2 py-1 border border-gray-600 text-sm font-medium text-gray-600 hover:border-black hover:text-gray-800"
