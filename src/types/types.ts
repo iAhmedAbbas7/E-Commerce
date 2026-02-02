@@ -1,3 +1,6 @@
+// <== IMPORTS  ==>
+import { email, z } from "zod";
+
 // <== PRODUCT TYPE ==>
 export type ProductType = {
   // <== PRODUCT ID ==>
@@ -49,3 +52,24 @@ export type ProductListType = ProductType[];
 
 // <== CART ITEM LIST TYPE ==>
 export type CartItemListType = CartItemType[];
+
+// <== SHIPPING FORM SCHEMA TYPE ==>
+export const ShippingFormSchemaType = z.object({
+  // <== NAME FIELD ==>
+  name: z.string().min(3, "Name must be at least 3 characters long"),
+  // <== EMAIL FIELD ==>
+  email: email("Invalid email address"),
+  // <== PHONE FIELD ==>
+  phone: z
+    .string()
+    .min(10, "Phone number must be between 7 and 12 digits")
+    .max(15, "Phone number must be between 7 and 12 digits")
+    .regex(/^[0-9]+$/, "Phone number must contain only digits"),
+  // <== ADDRESS FIELD ==>
+  address: z.string().min(1, "Address is required"),
+  // <== CITY FIELD ==>
+  city: z.string().min(1, "City is required"),
+});
+
+// <== SHIPPING FORM TYPE ==>
+export type ShippingFormType = z.infer<typeof ShippingFormSchemaType>;
