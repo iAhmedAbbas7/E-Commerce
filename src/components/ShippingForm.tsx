@@ -1,4 +1,5 @@
 // <== IMPORTS ==>
+import { JSX } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -10,7 +11,7 @@ const ShippingForm = ({
   setShippingForm,
 }: {
   setShippingForm: (data: ShippingFormType) => void;
-}) => {
+}): JSX.Element => {
   // USING USE FORM HOOK
   const {
     register,
