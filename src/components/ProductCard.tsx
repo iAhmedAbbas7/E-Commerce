@@ -5,8 +5,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { JSX, useState } from "react";
+import { toast } from "react-toastify";
 import { ProductType } from "@/types/types";
 import { ShoppingCart } from "lucide-react";
+import useCartStore from "@/store/CartStore";
 
 // <== PRODUCT CARD COMPONENT ==>
 const ProductCard = ({ product }: { product: ProductType }): JSX.Element => {
@@ -28,6 +30,20 @@ const ProductCard = ({ product }: { product: ProductType }): JSX.Element => {
       ...prev,
       [type]: value,
     }));
+  };
+  // GETTING ADD ITEM TO CART HANDLER FROM CART STORE
+  const { addItem } = useCartStore();
+  // ADD TO CART HANDLER
+  const handleAddToCart = () => {
+    // ADDING ITEM TO CART
+    addItem({
+      ...product,
+      selectedSize: productTypes.size,
+      selectedColor: productTypes.color,
+      quantity: 1,
+    });
+    // SHOWING TOAST NOTIFICATION
+    toast.success("Item added to cart!");
   };
   // RETURNING PRODUCT CARD COMPONENT
   return (
@@ -100,7 +116,10 @@ const ProductCard = ({ product }: { product: ProductType }): JSX.Element => {
           {/* PRICE */}
           <span className="font-medium">${product.price.toFixed(2)}</span>
           {/* ADD TO CART BUTTON */}
-          <button className="ring ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2">
+          <button
+            onClick={handleAddToCart}
+            className="ring ring-gray-200 shadow-lg rounded-md px-2 py-1 text-sm cursor-pointer hover:text-white hover:bg-black transition-all duration-300 flex items-center gap-2"
+          >
             <ShoppingCart className="w-5 h-5" />
             Add to Cart
           </button>
