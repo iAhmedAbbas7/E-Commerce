@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { ToastContainer } from "react-toastify";
 import { Geist, Geist_Mono } from "next/font/google";
 
 // <== SANS FONT CONFIGURATION ==>
@@ -44,6 +45,8 @@ export default function RootLayout({
           {/* FOOTER */}
           <Footer />
         </div>
+        {/* TOAST CONTAINER */}
+        <ToastContainer position="bottom-right" />
       </body>
     </html>
   );
