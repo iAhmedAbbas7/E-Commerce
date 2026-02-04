@@ -8,7 +8,9 @@ import {
   useSearchParams,
 } from "next/dist/client/components/navigation";
 import { JSX, useState } from "react";
+import { toast } from "react-toastify";
 import { ProductType } from "@/types/types";
+import useCartStore from "@/store/CartStore";
 import { Minus, Plus, ShoppingCart } from "lucide-react";
 
 // <== PRODUCT INTERACTION COMPONENT ==>
@@ -27,6 +29,8 @@ const ProductInteraction = ({
   const pathname = usePathname();
   // USING USE SEARCH PARAMS HOOK
   const searchParams = useSearchParams();
+  // GETTING ADD TO CART FROM CART STORE
+  const { addItem } = useCartStore();
   // PRODUCT QUANTITY STATE
   const [quantity, setQuantity] = useState<number>(1);
   // HANDLER FOR TYPE CHANGE
@@ -54,6 +58,19 @@ const ProductInteraction = ({
       }
     });
   };
+  // HANDLER FOR ADD TO CART
+  const handleAddToCart = () => {
+    // ADDING ITEM TO CART STORE
+    addItem({
+      ...product,
+      selectedSize,
+      selectedColor,
+      quantity,
+    });
+    // SHOWING TOAST NOTIFICATION
+    toast.success("Item added to cart!");
+  };
+
   // RETURNING PRODUCT INTERACTION COMPONENT
   return (
     // MAIN CONTAINER
@@ -129,7 +146,10 @@ const ProductInteraction = ({
         </div>
       </div>
       {/* ADD TO CART BUTTON */}
-      <button className="bg-black hover:bg-black/90 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 w-full cursor-pointer font-semibold">
+      <button
+        onClick={handleAddToCart}
+        className="bg-black hover:bg-black/90 text-white px-4 py-2 rounded-md flex items-center justify-center gap-2 w-full cursor-pointer font-semibold"
+      >
         <Plus className="w-4 h-4" /> <span>Add to Cart</span>
       </button>
       {/* BUY THIS PRODUCT BUTTON */}
