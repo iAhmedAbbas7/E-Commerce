@@ -151,10 +151,12 @@ const CartPage = (): JSX.Element => {
                         Quantity: {item.quantity}
                       </p>
                       <p className="text-sm text-gray-600 font-semibold">
-                        Size: {item.selectedSize}
+                        Size:{" "}
+                        <span className="uppercase">{item.selectedSize}</span>
                       </p>
                       <p className="text-sm text-gray-600 font-semibold">
-                        Color: {item.selectedColor}
+                        Color:{" "}
+                        <span className="uppercase">{item.selectedColor}</span>
                       </p>
                     </div>
                     <p className="text-sm font-semibold">
