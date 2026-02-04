@@ -21,6 +21,16 @@ const PRODUCT: ProductType = {
   },
 };
 
+// <== GENERATE METADATA FUNCTION ==>
+export async function generateMetadata() {
+  return {
+    // <== TITLE ==>
+    title: PRODUCT.name,
+    // <== DESCRIPTION ==>
+    description: PRODUCT.shortDescription,
+  };
+}
+
 // <== PRODUCT PAGE COMPONENT ==>
 const ProductPage = async ({
   searchParams,
